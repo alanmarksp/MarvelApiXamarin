@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MarvelAPI.CharacterDetail">
+  <StackLayout Orientation="Vertical">
+    <Grid Padding="5">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="Auto"/>
+        <ColumnDefinition Width="*"/>
+      </Grid.ColumnDefinitions>
+      <Image x:Name="thumbnail"/>
+      <Grid Grid.Column="1" Padding="5, 0">
+        <Grid.RowDefinitions>
+          <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <RelativeLayout>
+          <ScrollView RelativeLayout.HeightConstraint="{ConstraintExpression
+            Type=RelativeToParent,Property=Height,Factor=1,Constant=0}">
+            <Label x:Name="description" Grid.Row="1" FontSize="15"/>
+          </ScrollView>
+        </RelativeLayout>
+      </Grid>
+    </Grid>
+    <StackLayout Orientation="Vertical" Padding="10">
+      <ListView  x:Name="comicList" Header="Comics">
+        <ListView.Header>
+          <StackLayout Orientation="Horizontal" Padding="5">
+            <Label Text="Comics" FontSize="13" FontAttributes="Bold"/>
+          </StackLayout>
+        </ListView.Header>
+        <ListView.ItemTemplate>
+          <DataTemplate>
+            <ViewCell>
+              <StackLayout Padding="5">
+                <Label Text="{Binding name}" />
+              </StackLayout>
+            </ViewCell>
+          </DataTemplate>
+        </ListView.ItemTemplate>
+      </ListView>
+    </StackLayout>
+  </StackLayout>
+</ContentPage>

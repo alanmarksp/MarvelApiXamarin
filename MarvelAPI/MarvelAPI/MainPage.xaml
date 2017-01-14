@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MarvelAPI"
+             x:Class="MarvelAPI.MainPage">
+
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="*"/>
+      <RowDefinition Height="Auto"/>
+    </Grid.RowDefinitions>
+    <ListView  x:Name="characterList">
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <ViewCell>
+            <Grid Padding="5">
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+              </Grid.ColumnDefinitions>
+              <Image Source="{Binding smallThumbnailUrl}" />
+              <Grid Grid.Column="1" Padding="5, 0">
+                <Grid.RowDefinitions>
+                  <RowDefinition Height="Auto"/>
+                  <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Label Text="{Binding name}" />
+                <Label Text="{Binding description}" Grid.Row="1"/>
+              </Grid>
+            </Grid>
+          </ViewCell>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+    <Grid Grid.Row="1">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="*"/>
+      </Grid.ColumnDefinitions>
+      <Button Text="Previous" Clicked="loadPreviousPage" BackgroundColor="#303030"/>
+      <Button Text="Next" Grid.Column="1" Clicked="loadNextPage" BackgroundColor="#303030"/>
+    </Grid>
+    <ActivityIndicator x:Name="activityIndicator" IsVisible="True" IsRunning="False" Grid.RowSpan="2"/>
+  </Grid>
+
+</ContentPage>
